@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
 	<name>JAVA PROJECT MASTER</name>
+=======
+	<name>DataBaseConnectie</name>
+>>>>>>> origin/TEST-BRANCH-VOOR-ANDY
 	<comment></comment>
 	<projects>
 	</projects>

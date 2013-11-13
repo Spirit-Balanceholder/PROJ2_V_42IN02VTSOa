@@ -8,9 +8,16 @@ public class DBConnectie
 	static String	DataBase	= "agamfsch_db2";
 
 	// Inlognaam voor gebruiker
+<<<<<<< HEAD
 	static String	DB_User		= "agamfsch";
 
 	// Wachtwoord voor gebruiker
 	static String	DB_Password	= "kipp3n";
+=======
+	static String	DB_User		= "";
+
+	// Wachtwoord voor gebruiker
+	static String	DB_Password	= "";
+>>>>>>> origin/TEST-BRANCH-VOOR-ANDY
 
 }
