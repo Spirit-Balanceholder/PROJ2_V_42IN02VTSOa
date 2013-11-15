@@ -11,17 +11,16 @@ import Wordfeud.DataBaseConnectie.DBMySQL;
  */
 public class ModelLogin
 {
-	DBMySQL SQLC;
 	
 	public ModelLogin()
 	{
-		SQLC = new DBMySQL();
+		// SQLC = new DBMySQL();
 	}
 	
 	protected boolean CheckLogin(String User, String Password)
 			throws SQLException
 	{
-		SQLC.RecordExcist("account", "naam", User);
+		// SQLC.RecordExcist("account", "naam", User);
 		return (DBCheck(User, Password));
 	}
 	
