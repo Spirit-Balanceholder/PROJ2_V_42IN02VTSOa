@@ -218,7 +218,7 @@ public class DBMySQL
 	 *             De table terug sturen die de informatie bevat.
 	 * 
 	 */
-	JTable SelectDT(String _tableName) throws SQLException
+	public JTable SelectDT(String _tableName) throws SQLException
 	{
 		String query = String.format("Select * From `%s` ", _tableName) + Where;
 
@@ -257,7 +257,7 @@ public class DBMySQL
 	 * 
 	 *             De table terug sturen die de informatie bevat.
 	 */
-	JTable RunSelect(String _query) throws SQLException
+	public JTable RunSelect(String _query) throws SQLException
 	{
 		Connection con = ConnectionCl.Connect();
 

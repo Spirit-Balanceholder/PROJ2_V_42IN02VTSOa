@@ -2,16 +2,25 @@ package Wordfeud.InfoControllers;
 
 import java.sql.SQLException;
 
+import javax.swing.JTable;
+
 import Wordfeud.DataBaseConnectie.DBMySQL;
 
+/**
+ * 
+ * @author Andy Scherrenberg
+ * 
+ */
 public class AccountController
 {
-	void Select()
+	public JTable Select() throws SQLException
 	{
+		DBMySQL db = new DBMySQL();
 
+		return db.SelectDT("Account");
 	}
 
-	void Insert(AccountInfo ai)
+	public void Insert(AccountInfo ai)
 	{
 		DBMySQL db = new DBMySQL();
 		db.addDataValue("naam", ai.getName());
@@ -28,7 +37,7 @@ public class AccountController
 
 	}
 
-	void Update(AccountInfo ai) throws SQLException
+	public void Update(AccountInfo ai) throws SQLException
 	{
 		DBMySQL db = new DBMySQL();
 		db.addDataValue("wachtwoord", ai.getPassword());
@@ -48,7 +57,7 @@ public class AccountController
 		}
 	}
 
-	void Delete(AccountInfo ai)
+	public void Delete(AccountInfo ai)
 	{
 		DBMySQL db = new DBMySQL();
 		db.addWhere("Naam", ai.getName());
