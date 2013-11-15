@@ -12,7 +12,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import Wordfeud.DataBaseConnectie.DBMySQL;
-import Wordfeud.InfoControllers.AccountController;
 
 public class TestConnectieForm
 {
@@ -55,8 +54,7 @@ public class TestConnectieForm
 					js = new JScrollPane(tb);
 					js.setBounds(0, 100, 490, 300);
 					f.getContentPane().add(js);
-				}
-				catch (Exception e)
+				} catch (Exception e)
 				{
 					System.out.println(e);
 				}
@@ -68,31 +66,7 @@ public class TestConnectieForm
 		try
 		{
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-			// tb = AccountController.("account");
-=======
-			tb = AccountController.Select();
->>>>>>> f4d8ab299875ebcc29ef6592517270ddbc7452db
-=======
-			tb = AccountController.Select();
->>>>>>> f4d8ab299875ebcc29ef6592517270ddbc7452db
-
 		} catch (Exception e)
-=======
-			tb = AccountController.Select();
-
-		}
-		catch (Exception e)
->>>>>>> f4d8ab299875ebcc29ef6592517270ddbc7452db
-=======
-			// tb = d.SelectDT("account");
-
-		}
-		catch (Exception e)
->>>>>>> parent of 41d9130... ab
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
