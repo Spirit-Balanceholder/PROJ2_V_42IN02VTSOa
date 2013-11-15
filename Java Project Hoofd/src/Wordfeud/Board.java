@@ -28,7 +28,7 @@ public class Board
 	private int						Size			= 30;
 	private int						BoardSize		= 16;
 	private int						Offset			= 30;
-	private final JButton			btnNewButton	= new JButton("New button");
+	private final JButton			btnNewButton	= new JButton("Druk dan");
 
 	/**
 	 * Launch the application.
@@ -151,16 +151,16 @@ public class Board
 			// een test om door middel van een opgegeven locatie een letter in
 			// te voeren met een waarde van de letter
 			Tile t = hmTiles.get("1-1");
-			t.Set("M", 8);
+			t.Set("M", 1);
 
 			t = hmTiles.get("1-2");
-			t.Set("i", 2);
+			t.Set("i", 3);
 
 			t = hmTiles.get("1-3");
-			t.Set("k", 2);
+			t.Set("k", 3);
 
 			t = hmTiles.get("1-4");
-			t.Set("e", 2);
+			t.Set("e", 7);
 
 			// je moet repainten anders komt er blijkbaar geen letter in.
 			frmWordfeud.repaint();

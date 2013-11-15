@@ -80,21 +80,9 @@ public class Tile extends JPanel
 		lblValue.setSize(25, 15);
 		//
 		setOpaque(false);
-		// lblLetter.setLocation(0, 0);
-		// lblLetter.setSize(15, 15);
-
-		/*
-		 * lblLetter.setFont(new Font("Tahoma", Font.BOLD, 12));
-		 * lblValue.setFont(new Font("Tahoma", Font.CENTER_BASELINE, 9));
-		 * lblValue.setHorizontalAlignment(JLabel.RIGHT);
-		 * lblLetter.setHorizontalAlignment(SwingConstants.LEFT);
-		 * lblLetter.setVerticalAlignment(SwingConstants.BOTTOM);
-		 * lblValue.setHorizontalAlignment(SwingConstants.RIGHT);
-		 * lblValue.setVerticalAlignment(SwingConstants.TOP);
-		 */
 
 		this.add(lblLetter);
-
+		this.add(lblValue, BorderLayout.NORTH);
 	}
 
 	/**
@@ -102,9 +90,9 @@ public class Tile extends JPanel
 	 * tile word
 	 * 
 	 * @param _letterType
-	 *            Geef mee welke type deze tile moet worden
+	 *            Geef mee welke type deze tile moet worden (a-z)
 	 * @param Value
-	 *            geef mee welke waarde deze letter heeft
+	 *            geef mee welke waarde deze letter heeft (0 = leeg)
 	 */
 	public void Set(String _letterType, int Value)
 	{
@@ -112,8 +100,8 @@ public class Tile extends JPanel
 		letterType = _letterType.toUpperCase();
 		// tileType = _tileType;
 		//
-		if (Value != 0)
-			this.add(lblValue, BorderLayout.NORTH);
+		// zichtbaar maken van waarde als het ook werkelijk gevuld is
+		lblValue.setVisible((Value != 0));
 
 		lblValue.setText(Integer.toString(Value));
 
@@ -206,5 +194,8 @@ public class Tile extends JPanel
 
 		// Sets strokes to default, is better.
 		graphics.setStroke(new BasicStroke());
+
+		//
+
 	}
 }
