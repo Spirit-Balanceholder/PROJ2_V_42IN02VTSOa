@@ -1,4 +1,5 @@
 package Wordfeud;
+
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -12,6 +13,11 @@ import java.awt.RenderingHints;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * 
+ * @author MIKE
+ * 
+ */
 public class Tile extends JPanel
 {
 	// Stijl van het tegel
