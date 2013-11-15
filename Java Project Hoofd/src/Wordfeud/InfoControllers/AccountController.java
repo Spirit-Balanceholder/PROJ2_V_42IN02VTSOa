@@ -1,5 +1,8 @@
-package Wordfeud;
+package Wordfeud.InfoControllers;
+
 import java.sql.SQLException;
+
+import Wordfeud.DataBaseConnectie.DBMySQL;
 
 public class AccountController
 {

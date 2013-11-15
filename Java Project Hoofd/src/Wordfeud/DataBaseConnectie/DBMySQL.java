@@ -1,4 +1,5 @@
-package Wordfeud;
+package Wordfeud.DataBaseConnectie;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -66,7 +67,7 @@ public class DBMySQL
 	 *            clause. Mochten er al gegevens staan in where dan word het
 	 *            toegevoegd als een and.
 	 */
-	void addWhere(String _field, String _value)
+	public void addWhere(String _field, String _value)
 	{
 		if (Where.equals(""))
 			Where = String.format(" Where `%s` = '%s'", _field, _value);
@@ -87,7 +88,7 @@ public class DBMySQL
 	 *            clause. Mochten er al gegevens staan in where dan word het
 	 *            toegevoegd als een and.
 	 */
-	void addWhereLike(String _field, String _value)
+	public void addWhereLike(String _field, String _value)
 	{
 		if (Where.equals(""))
 			Where = " Where `" + _field + "` like '%" + _value + "%'";
@@ -109,7 +110,7 @@ public class DBMySQL
 	 *            _field als er al informatie in Insert staat dan word dit
 	 *            anders opgebouwd. Dit geld ook voor Values en Updates.
 	 */
-	void addDataValue(String _field, String _value)
+	public void addDataValue(String _field, String _value)
 	{
 		if (Insert.equals(""))
 			Insert = String.format("`%s`", _field);
@@ -141,7 +142,7 @@ public class DBMySQL
 	 *             word deze toegevoegd. Aanroepen van Execute en het mysql
 	 *             statement meesturen.
 	 */
-	void Delete(String _tableName) throws SQLException
+	public void Delete(String _tableName) throws SQLException
 	{
 		String DeleteStatement = String.format("Delete from `%s` ", _tableName)
 				+ Where;
@@ -162,7 +163,7 @@ public class DBMySQL
 	 *             word deze toegevoegd. Aanroepen van Execute en het mysql
 	 *             statement meesturen.
 	 */
-	void Update(String _tableName) throws SQLException
+	public void Update(String _tableName) throws SQLException
 	{
 		String UpdateStament = String.format("Update `%s` set %s ", _tableName,
 				Updates) + Where;
@@ -183,7 +184,7 @@ public class DBMySQL
 	 *             Het insert statement word opgebouwd. Aanroepen van Execute en
 	 *             het mysql statement meesturen.
 	 */
-	void Insert(String _tableName) throws SQLException
+	public void Insert(String _tableName) throws SQLException
 	{
 		String InsertStament = String.format("Insert into `%s`(%s) values(%s)",
 				_tableName, Insert, Values);
@@ -324,8 +325,8 @@ public class DBMySQL
 
 	}
 
-	boolean RecordExcist(String _tableName, String _fieldName, String _value)
-			throws SQLException
+	public boolean RecordExcist(String _tableName, String _fieldName,
+			String _value) throws SQLException
 	{
 
 		String RecordChecker = String.format(

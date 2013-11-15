@@ -1,4 +1,4 @@
-package Wordfeud;
+package Wordfeud.DataBaseConnectie;
 public class DBConnectie
 {
 

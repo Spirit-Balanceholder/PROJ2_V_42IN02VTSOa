@@ -1,8 +1,8 @@
 package Wordfeud;
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+
+import Wordfeud.DataBaseConnectie.DBMySQL;
 
 public class TestConnectieForm
 {
@@ -65,10 +67,10 @@ public class TestConnectieForm
 		try
 		{
 
-			tb = d.SelectDT("account");
+			// tb = d.SelectDT("account");
 
 		}
-		catch (SQLException e)
+		catch (Exception e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();

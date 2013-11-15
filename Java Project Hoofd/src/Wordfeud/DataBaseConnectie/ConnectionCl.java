@@ -1,4 +1,4 @@
-package Wordfeud;
+package Wordfeud.DataBaseConnectie;
 import java.sql.Connection;
 import java.sql.DriverManager;
 

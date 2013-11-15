@@ -1,4 +1,4 @@
-package Wordfeud;
+package Wordfeud.InfoControllers;
 public class AccountInfo
 {
 	private String	Name		= "";
