@@ -14,6 +14,11 @@ import javax.swing.JTextField;
 import Wordfeud.DataBaseConnectie.DBMySQL;
 import Wordfeud.InfoControllers.AccountController;
 
+/**
+ * 
+ * @author Andy Scherrenberg
+ * 
+ */
 public class TestConnectieForm
 {
 	static JTextField	text1;

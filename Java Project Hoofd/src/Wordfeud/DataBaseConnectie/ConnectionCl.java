@@ -1,7 +1,13 @@
 package Wordfeud.DataBaseConnectie;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/**
+ * 
+ * @author Andy Scherrenberg
+ * 
+ */
 class ConnectionCl
 {
 	static Connection Connect()

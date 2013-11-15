@@ -1,4 +1,10 @@
 package Wordfeud.DataBaseConnectie;
+
+/**
+ * 
+ * @author Andy Scherrenberg
+ * 
+ */
 public class DBConnectie
 {
 
