@@ -30,7 +30,7 @@ public class ViewLogin
 	private JPasswordField txtPassword;
 	private JLabel lblNewLabel_2;
 	private JButton btnLogin;
-	private ModelLogin LIC;
+	private ModelLogin ml;
 	
 	/**
 	 * Launch the application.
@@ -66,7 +66,7 @@ public class ViewLogin
 	 */
 	private void initialize()
 	{
-		LIC = new ModelLogin();
+		ml = new ModelLogin();
 		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 340, 180);
@@ -110,7 +110,7 @@ public class ViewLogin
 				
 				try
 				{
-					if (LIC.CheckLogin(txtUserName.getText(),
+					if (ml.CheckLogin(txtUserName.getText(),
 							txtPassword.getText()))
 					{
 						// dummy
