@@ -2,10 +2,11 @@ package Wordfeud;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -25,7 +26,7 @@ public class Board
 	public HashMap<String, Tile>	hmTiles			= new HashMap<String, Tile>();
 	// Waardes
 	private int						Size			= 30;
-	private int						BoardSize		= 15;
+	private int						BoardSize		= 16;
 	private int						Offset			= 30;
 	private final JButton			btnNewButton	= new JButton("New button");
 
@@ -74,73 +75,95 @@ public class Board
 		frmWordfeud.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmWordfeud.getContentPane().setLayout(null);
 		{
-			this.btnNewButton.setBounds(38, 38, 89, 23);
+			this.btnNewButton
+					.addActionListener(new BtnNewButtonActionListener());
+			this.btnNewButton.setBounds(10, 11, 89, 23);
 			frmWordfeud.getContentPane().add(this.btnNewButton);
 		}
 
+		//
 		GenerateField();
+
+		//
+		FillField();
+
 	}
 
-	private void GenerateField()
+	/**
+	 * Vul het veld met waarde vanuit de database Dit is of het een dubbel
+	 * letterwaarde is of eventueel een leeg veld of etc.
+	 */
+	private void FillField()
 	{
 		try
 		{
+			ResultSet rs = TileController.Select();
 
-			ResultSet rs = null;
-
-			// Playfieldinfo pi = new Playfieldinfo();
-			// hmTiles = pi.GethmByID();
-			// ID NU TIJDELIJK DIT:
-
-			Tile tile;
-			for (int x = 1; x < BoardSize; x++)
-				for (int y = 1; y < BoardSize; y++)
-				{
-
-					rs = TileController.getFromXY(x, y);
-					while (rs.next())
-					{
-						String value = rs.getString(3);
-						String length = rs.getString(4);
-
-						System.out.println("length=" + length + ", value='"
-								+ value + "'");
-					}
-
-					/*
-					 * tile = new Tile(Tile.eTileType.NoType, RandomLetter(),
-					 * 4); tile.setSize(Size, Size); tile.setLocation(y * Size +
-					 * Offset, x * Size + Offset); // tile.addMouseListener(new
-					 * Panel_1MouseListener()); //
-					 * frame.getContentPane().add(tile);
-					 * 
-					 * hmTiles.put(x + "-" + y, tile);
-					 */
-
-				}
-
-			for (Tile t : hmTiles.values())
+			while (rs.next())
 			{
-				frmWordfeud.getContentPane().add(t);
-			}
-		}
+				String xx = rs.getString(1);
+				String yy = rs.getString(2);
+				Tile t = hmTiles.get(xx + "-" + yy);
+				// t.SetText(rs.getString(4));
+				t.Set(rs.getString(4), 0);
 
-		catch (SQLException e)
+			}
+
+		} catch (SQLException e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	private String RandomLetter()
+	/**
+	 * Dit maakt het veld aan, dit zijn alleen de controls, dus ze bevatten nog
+	 * geen waardes
+	 */
+	private void GenerateField()
 	{
-		Random r = new Random();
-		// TODO TEMP . deze classe word weggegooit als er gwn een database
-		// connectie is
-		String[] sr = new String[]
-		{ "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n",
-				"o", "p", "q", "r", "s", "t", "u" };
 
-		return sr[r.nextInt(sr.length)];
+		// Playfieldinfo pi = new Playfieldinfo();
+		// hmTiles = pi.GethmByID();
+		// ID NU TIJDELIJK DIT:
+
+		Tile tile;
+		for (int x = 1; x < BoardSize; x++)
+			for (int y = 1; y < BoardSize; y++)
+			{
+
+				tile = new Tile();
+				tile.setSize(Size, Size);
+				tile.setLocation(y * Size + Offset, x * Size + Offset);
+				// tile.addMouseListener(new Panel_1MouseListener());
+				// frame.getContentPane().add(tile);
+
+				hmTiles.put(x + "-" + y, tile);
+				frmWordfeud.getContentPane().add(tile);
+			}
+
+	}
+
+	private class BtnNewButtonActionListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent arg0)
+		{
+			// een test om door middel van een opgegeven locatie een letter in
+			// te voeren met een waarde van de letter
+			Tile t = hmTiles.get("1-1");
+			t.Set("M", 8);
+
+			t = hmTiles.get("1-2");
+			t.Set("i", 2);
+
+			t = hmTiles.get("1-3");
+			t.Set("k", 2);
+
+			t = hmTiles.get("1-4");
+			t.Set("e", 2);
+
+			// je moet repainten anders komt er blijkbaar geen letter in.
+			frmWordfeud.repaint();
+		}
 	}
 }

@@ -3,18 +3,16 @@ package Wordfeud.InfoControllers;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.swing.JTable;
-
 import Wordfeud.Convert;
 import Wordfeud.DataBaseConnectie.DBMySQL;
 
 public class TileController
 {
-	public static JTable Select() throws SQLException
+	public static ResultSet Select() throws SQLException
 	{
 		DBMySQL db = new DBMySQL();
 
-		return db.SelectDT("Tegel");
+		return db.SelectDTtest("Tegel");
 
 	}
 

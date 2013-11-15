@@ -56,16 +56,13 @@ public class Tile extends JPanel
 	private eTileType	tileType	= null;
 	private String		letterType	= "";
 
-	public Tile(eTileType _tileType, String _letterType, int Value)
+	public Tile()
 	{
 		super();
 		lblLetter.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblValue.setFont(new Font("Tahoma", Font.CENTER_BASELINE, 8));
 
 		this.setLayout(null);
-		//
-		letterType = _letterType.toUpperCase();
-		tileType = _tileType;
 
 		// Set location
 		lblLetter.setLocation(3, 10);
@@ -88,50 +85,73 @@ public class Tile extends JPanel
 		 */
 
 		this.add(lblLetter);
+
+	}
+
+	/**
+	 * Vul de tile met waardes, er word hierin gecontrolleerd welke kleur de
+	 * tile word
+	 * 
+	 * @param _letterType
+	 *            Geef mee welke type deze tile moet worden
+	 * @param Value
+	 *            geef mee welke waarde deze letter heeft
+	 */
+	public void Set(String _letterType, int Value)
+	{
+		//
+		letterType = _letterType.toUpperCase();
+		// tileType = _tileType;
+		//
 		if (Value != 0)
 			this.add(lblValue, BorderLayout.NORTH);
 
-		// Set text and color
-		if (tileType == eTileType.NoType)
-		{
+		lblValue.setText(Integer.toString(Value));
+
+		if (letterType.isEmpty())
+			this.setBackground(Color.gray);
+		else
+			this.setBackground(Color.white);
+
+		if (!letterType.contains("--"))
 			lblLetter.setText(letterType);
 
-			lblValue.setText(Integer.toString(Value));
-			if (letterType.isEmpty())
-				this.setBackground(Color.gray);
-			else
-				this.setBackground(Color.white);
-
-		} else
+		// System.out.print(_letterType);
+		switch (_letterType)
 		{
-			lblLetter.setText(tileType.toString());
-			lblLetter.setForeground(Color.white);
-			switch (tileType)
-			{
-				case DL:// green
-					this.setBackground(Color.green);
-					break;
-				case DW:// orange
-					this.setBackground(Color.orange);
-					break;
-				case NoType:// gray
-					this.setBackground(Color.lightGray);
-					break;
-				case TL:// blauw
-					this.setBackground(Color.blue);
-					break;
-				case TW:// roodbruin
-					this.setBackground(Color.red);
-					break;
-				case X:
-					this.setBackground(Color.pink);
-					break;
-				default:
-					this.setBackground(Color.black); // foutje
-					break;
+			case "DL":// green
+				this.setBackground(Color.green);
+				this.lblLetter.setForeground(Color.white);
+				break;
+			case "DW":// orange
+				this.setBackground(Color.orange);
+				this.lblLetter.setForeground(Color.white);
+				break;
+			case "TL":// blauw
+				this.setBackground(Color.blue);
+				this.lblLetter.setForeground(Color.white);
+				break;
+			case "TW":// roodbruin
+				this.setBackground(Color.red);
+				this.lblLetter.setForeground(Color.white);
+				break;
+			case "*":
+				this.setBackground(Color.pink);
+				this.lblLetter.setForeground(Color.white);
+				break;
+			case "--":
+				this.setBackground(Color.gray);
+				this.lblLetter.setForeground(Color.black);
+				lblLetter.setText("");
+				break;
+			default:
+				this.setBackground(Color.white);
+				this.lblLetter.setForeground(Color.black);
+				break;
 
-			}
 		}
+		this.lblLetter.getText().toUpperCase();
+		// }
 	}
 
 	@Override
