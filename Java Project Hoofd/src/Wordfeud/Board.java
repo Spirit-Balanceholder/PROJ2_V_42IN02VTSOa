@@ -8,7 +8,6 @@ import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JTable;
 
 import Wordfeud.InfoControllers.TileController;
 
@@ -52,6 +51,7 @@ public class Board
 
 	/**
 	 * Create the application.
+	 * 
 	 */
 	public Board(int GameID)
 	{
@@ -62,6 +62,7 @@ public class Board
 
 	/**
 	 * Initialize the contents of the frame.
+	 * 
 	 */
 	private void initialize()
 	{
@@ -81,15 +82,17 @@ public class Board
 
 	private void GenerateField()
 	{
-		JTable tblTiles;
-
+		Object[] rr = null;
 		try
 		{
-			tblTiles = TileController.Select();
+			rr = TileController.getFromXY(1, 1);
 		} catch (SQLException e)
 		{
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		String xxx = (String) rr[3];
+		int asdasd = (int) rr[0];
 
 		// Playfieldinfo pi = new Playfieldinfo();
 		// hmTiles = pi.GethmByID();

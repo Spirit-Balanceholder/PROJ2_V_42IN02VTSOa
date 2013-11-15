@@ -17,12 +17,13 @@ public class TileController
 
 	}
 
-	public static JTable getFromXY(int x, int y) throws SQLException
+	public static Object[] getFromXY(int x, int y) throws SQLException
 	{
 		DBMySQL db = new DBMySQL();
 		db.addWhere("x", Convert.ToString(x));
 		db.addWhere("y", Convert.ToString(y));
-		return db.SelectDT("Tegel");
+		db.SelectDR("Tegel");
+		return db.SelectDR("Tegel");// db.SelectDT("Tegel");
 
 	}
 }
