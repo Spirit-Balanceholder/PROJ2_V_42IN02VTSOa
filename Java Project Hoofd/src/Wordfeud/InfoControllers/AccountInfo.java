@@ -1,4 +1,10 @@
 package Wordfeud.InfoControllers;
+
+/**
+ * 
+ * @author Andy Scherrenberg
+ * 
+ */
 public class AccountInfo
 {
 	private String	Name		= "";
