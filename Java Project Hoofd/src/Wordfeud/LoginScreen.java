@@ -1,8 +1,11 @@
 package Wordfeud;
+
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -105,17 +108,29 @@ public class LoginScreen
 			public void actionPerformed(ActionEvent arg0)
 			{
 				
-				if (LIC.CheckLogin(txtUserName.getText(), txtPassword.getText()))
+				try
 				{
-					// dummy
-					JOptionPane.showMessageDialog(frame, "goed.", "goed",
-							JOptionPane.INFORMATION_MESSAGE);
-					// dummy
-				} else
+					if (LIC.CheckLogin(txtUserName.getText(),
+							txtPassword.getText()))
+					{
+						// dummy
+						JOptionPane.showMessageDialog(frame, "goed.", "goed",
+								JOptionPane.INFORMATION_MESSAGE);
+						// dummy
+					} else
+					{
+						JOptionPane.showMessageDialog(frame,
+								"Ongeldige logingegevens.", "Fout!",
+								JOptionPane.WARNING_MESSAGE);
+					}
+				} catch (HeadlessException e)
 				{
-					JOptionPane.showMessageDialog(frame,
-							"Ongeldige logingegevens.", "Fout!",
-							JOptionPane.WARNING_MESSAGE);
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SQLException e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}
 		});
