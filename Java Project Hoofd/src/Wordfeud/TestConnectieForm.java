@@ -70,6 +70,7 @@ public class TestConnectieForm
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 			// tb = AccountController.("account");
 =======
 			tb = AccountController.Select();
@@ -80,6 +81,8 @@ public class TestConnectieForm
 
 		} catch (Exception e)
 =======
+=======
+>>>>>>> f4d8ab299875ebcc29ef6592517270ddbc7452db
 			tb = AccountController.Select();
 
 		}
