@@ -1,22 +1,24 @@
 package Wordfeud;
+
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JCheckBox;
-import javax.swing.SwingConstants;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 /**
  * 
  * @author Martin
- *
+ * 
  */
-public class AccountManagement {
-
+public class ViewAccountM
+{
+	
 	private JFrame frame;
 	private JComboBox comboBox;
 	private JLabel lblAccountnaam;
@@ -26,38 +28,46 @@ public class AccountManagement {
 	private JLabel lblRechten;
 	private JButton btnToepassen;
 	private JButton btnAnnuleren;
-	private AccMControl AMC; // AMC = Account Management Control; dus de logic/model layer
-	String[][] players;
-
+	private ModelAccountM AMC; // AMC = Account Management Control; dus de
+								// logic/model layer
+	String[][] players; // Martin, Temp
+	
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AccountManagement window = new AccountManagement();
+	public static void main(String[] args)
+	{
+		EventQueue.invokeLater(new Runnable()
+		{
+			public void run()
+			{
+				try
+				{
+					ViewAccountM window = new ViewAccountM();
 					window.frame.setVisible(true);
-				} catch (Exception e) {
+				} catch (Exception e)
+				{
 					e.printStackTrace();
 				}
 			}
 		});
 	}
-
+	
 	/**
 	 * Create the application.
 	 */
-	public AccountManagement() {
+	public ViewAccountM()
+	{
 		initialize();
 	}
-
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize()
+	{
 		
-		AMC = new AccMControl();
+		AMC = new ModelAccountM();
 		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 306, 193);
@@ -67,10 +77,12 @@ public class AccountManagement {
 		comboBox = new JComboBox();
 		comboBox.setBounds(120, 11, 148, 20);
 		frame.getContentPane().add(comboBox);
-		comboBox.addActionListener (new ActionListener () {
-		    public void actionPerformed(ActionEvent e) {
-		        refreshCbx();
-		    }
+		comboBox.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				refreshCbx();
+			}
 		});
 		
 		lblAccountnaam = new JLabel("Accountnaam:");
@@ -96,8 +108,10 @@ public class AccountManagement {
 		frame.getContentPane().add(lblRechten);
 		
 		btnToepassen = new JButton("Toepassen");
-		btnToepassen.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		btnToepassen.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
 				String[] update = new String[4];
 				update[0] = comboBox.getSelectedItem().toString();
 				if (chckbxObserver.isSelected())
@@ -120,8 +134,10 @@ public class AccountManagement {
 		frame.getContentPane().add(btnToepassen);
 		
 		btnAnnuleren = new JButton("Annuleren");
-		btnAnnuleren.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		btnAnnuleren.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
 			}
 		});
 		btnAnnuleren.setBounds(58, 120, 100, 23);
@@ -135,15 +151,14 @@ public class AccountManagement {
 		refreshCbx();
 	}
 	
-	
 	/**
-	 * Verversen van de checkboxes na het wisselen van geselecteerd account 
+	 * Verversen van de checkboxes na het wisselen van geselecteerd account
 	 * Nodig omdat anders de checkboxes niet veranderen na wissen van selectie
 	 */
-	private void refreshCbx ()
+	private void refreshCbx()
 	{
 		for (int x = 0; x < players.length; x++)
-		{	
+		{
 			if (players[x][0] == comboBox.getSelectedItem().toString())
 			{
 				if (players[x][1] == "true")
@@ -157,7 +172,7 @@ public class AccountManagement {
 				if (players[x][3] == "true")
 					chckbxAdmin.setSelected(true);
 				else
-					chckbxAdmin.setSelected(false);	
+					chckbxAdmin.setSelected(false);
 			}
 		}
 	}

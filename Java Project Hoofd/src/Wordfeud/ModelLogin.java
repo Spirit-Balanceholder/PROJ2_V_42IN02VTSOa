@@ -7,11 +7,11 @@ import java.sql.SQLException;
  * @author Martin
  * 
  */
-public class LoginControl
+public class ModelLogin
 {
 	DBMySQL SQLC;
 	
-	public LoginControl()
+	public ModelLogin()
 	{
 		SQLC = new DBMySQL();
 	}

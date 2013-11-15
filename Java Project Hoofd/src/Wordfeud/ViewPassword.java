@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 
-public class PasswordEdit
+public class ViewPassword
 {
 	
 	private JFrame frame;
@@ -23,7 +23,7 @@ public class PasswordEdit
 	private JLabel label;
 	private JPasswordField NieuwWW;
 	private JButton btnAnnuleren;
-	private PasswordEditControl PEC;
+	private ModelPasswordEdit PEC;
 	private JLabel AccNaam;
 	
 	/**
@@ -37,7 +37,7 @@ public class PasswordEdit
 			{
 				try
 				{
-					PasswordEdit window = new PasswordEdit();
+					ViewPassword window = new ViewPassword();
 					window.frame.setVisible(true);
 				} catch (Exception e)
 				{
@@ -50,7 +50,7 @@ public class PasswordEdit
 	/**
 	 * Create the application.
 	 */
-	public PasswordEdit()
+	public ViewPassword()
 	{
 		initialize();
 	}
@@ -61,7 +61,7 @@ public class PasswordEdit
 	private void initialize()
 	{
 		
-		PEC = new PasswordEditControl();
+		PEC = new ModelPasswordEdit();
 		
 		frame = new JFrame();
 		frame.setTitle("Wachtwoord Wijzigen");

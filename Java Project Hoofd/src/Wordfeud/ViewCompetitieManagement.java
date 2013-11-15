@@ -18,7 +18,7 @@ import javax.swing.event.DocumentListener;
  * @author Martin
  * 
  */
-public class CompetitieManagement
+public class ViewCompetitieManagement
 {
 	
 	private JFrame frame;
@@ -31,7 +31,7 @@ public class CompetitieManagement
 	private JTextField txtEinddatum;
 	private JEditorPane txtBeschrijving;
 	private JLabel lblLetterCount;
-	private CompetitieControl COCO;
+	private ModelCompetitie COCO;
 	private int CompID = 0;
 	
 	/**
@@ -45,7 +45,7 @@ public class CompetitieManagement
 			{
 				try
 				{
-					CompetitieManagement window = new CompetitieManagement();
+					ViewCompetitieManagement window = new ViewCompetitieManagement();
 					window.frame.setVisible(true);
 				} catch (Exception e)
 				{
@@ -58,12 +58,12 @@ public class CompetitieManagement
 	/**
 	 * Create the application.
 	 */
-	public CompetitieManagement()
+	public ViewCompetitieManagement()
 	{
 		initialize();
 	}
 	
-	public CompetitieManagement(int ID)
+	public ViewCompetitieManagement(int ID)
 	{
 		CompID = ID;
 		initialize();
@@ -74,7 +74,7 @@ public class CompetitieManagement
 	 */
 	private void initialize()
 	{
-		COCO = new CompetitieControl();
+		COCO = new ModelCompetitie();
 		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 275);

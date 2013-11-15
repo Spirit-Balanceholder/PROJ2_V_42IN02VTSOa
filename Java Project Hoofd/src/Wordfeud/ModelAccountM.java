@@ -1,6 +1,6 @@
 package Wordfeud;
 
-public class AccMControl {
+public class ModelAccountM {
 
 	
 	public String[][] getPlayers ()

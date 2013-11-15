@@ -1,5 +1,5 @@
 package Wordfeud;
-public class PasswordEditControl
+public class ModelPasswordEdit
 {
 	
 	/**

@@ -20,7 +20,7 @@ import javax.swing.SwingConstants;
  * @author Martin
  * 
  */
-public class LoginScreen
+public class ViewLogin
 {
 	
 	private JFrame frame;
@@ -30,7 +30,7 @@ public class LoginScreen
 	private JPasswordField txtPassword;
 	private JLabel lblNewLabel_2;
 	private JButton btnLogin;
-	private LoginControl LIC;
+	private ModelLogin LIC;
 	
 	/**
 	 * Launch the application.
@@ -43,7 +43,7 @@ public class LoginScreen
 			{
 				try
 				{
-					LoginScreen window = new LoginScreen();
+					ViewLogin window = new ViewLogin();
 					window.frame.setVisible(true);
 				} catch (Exception e)
 				{
@@ -56,7 +56,7 @@ public class LoginScreen
 	/**
 	 * Create the application.
 	 */
-	public LoginScreen()
+	public ViewLogin()
 	{
 		initialize();
 	}
@@ -66,7 +66,7 @@ public class LoginScreen
 	 */
 	private void initialize()
 	{
-		LIC = new LoginControl();
+		LIC = new ModelLogin();
 		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 340, 180);

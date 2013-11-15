@@ -4,7 +4,7 @@ package Wordfeud;
  * @author Martin
  * 
  */
-public class CompetitieControl
+public class ModelCompetitie
 {
 	protected String[] GetComp(int ID)
 	{
