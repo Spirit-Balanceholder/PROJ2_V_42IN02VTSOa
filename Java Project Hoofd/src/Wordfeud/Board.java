@@ -2,10 +2,15 @@ package Wordfeud;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Random;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JTable;
+
+import Wordfeud.InfoControllers.TileController;
 
 /**
  * 
@@ -17,11 +22,12 @@ public class Board
 
 	private JFrame					frmWordfeud;
 	// Hashmap with all tiles
-	public HashMap<String, Tile>	hmTiles		= new HashMap<String, Tile>();
+	public HashMap<String, Tile>	hmTiles			= new HashMap<String, Tile>();
 	// Waardes
-	private int						Size		= 30;
-	private int						BoardSize	= 15;
-	private int						Offset		= 30;
+	private int						Size			= 30;
+	private int						BoardSize		= 15;
+	private int						Offset			= 30;
+	private final JButton			btnNewButton	= new JButton("New button");
 
 	/**
 	 * Launch the application.
@@ -65,28 +71,36 @@ public class Board
 		frmWordfeud.setBounds(100, 100, 600, 600);
 		frmWordfeud.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmWordfeud.getContentPane().setLayout(null);
+		{
+			this.btnNewButton.setBounds(38, 38, 89, 23);
+			frmWordfeud.getContentPane().add(this.btnNewButton);
+		}
 
 		GenerateField();
 	}
 
 	private void GenerateField()
 	{
+		JTable tblTiles;
+
+		try
+		{
+			tblTiles = TileController.Select();
+		} catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+
 		// Playfieldinfo pi = new Playfieldinfo();
 		// hmTiles = pi.GethmByID();
 		// ID NU TIJDELIJK DIT:
-		int index = 0;
+
 		Tile tile;
 		for (int x = 0; x < BoardSize; x++)
 			for (int y = 0; y < BoardSize; y++)
 			{
-				if (index == 1 || index == 5 || index == 10)
-					tile = new Tile(Tile.eTileType.DL, "", 0);
-				else if (index == 3 || index == 7 || index == 13)
-					tile = new Tile(Tile.eTileType.TW, "", 0);
-				else if (index == 2 || index == 8 || index == 18)
-					tile = new Tile(Tile.eTileType.NoType, "", 0);
-				else
-					tile = new Tile(Tile.eTileType.NoType, RandomLetter(), 4);
+
+				tile = new Tile(Tile.eTileType.NoType, RandomLetter(), 4);
 
 				tile.setSize(Size, Size);
 				tile.setLocation(y * Size + Offset, x * Size + Offset);
@@ -95,7 +109,6 @@ public class Board
 
 				hmTiles.put(x + "-" + y, tile);
 
-				index++;
 			}
 
 		for (Tile t : hmTiles.values())
@@ -115,5 +128,4 @@ public class Board
 
 		return sr[r.nextInt(sr.length)];
 	}
-
 }
