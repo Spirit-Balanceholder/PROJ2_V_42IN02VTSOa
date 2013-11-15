@@ -11,7 +11,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-import Wordfeud.DataBaseConnectie.DBMySQL;
+import Wordfeud.InfoControllers.AccountController;
 
 /**
  * 
@@ -48,18 +48,16 @@ public class TestConnectieForm
 		{
 			public void actionPerformed(ActionEvent evt)
 			{
-				DBMySQL d = new DBMySQL();
 
 				try
 				{
 					f.remove(js);
 
-					d.RecordExcist("account", "naam", "jager684");
-
 					js = new JScrollPane(tb);
 					js.setBounds(0, 100, 490, 300);
 					f.getContentPane().add(js);
-				} catch (Exception e)
+				}
+				catch (Exception e)
 				{
 					System.out.println(e);
 				}
@@ -70,8 +68,9 @@ public class TestConnectieForm
 
 		try
 		{
-
-		} catch (Exception e)
+			tb = AccountController.Select();
+		}
+		catch (Exception e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
