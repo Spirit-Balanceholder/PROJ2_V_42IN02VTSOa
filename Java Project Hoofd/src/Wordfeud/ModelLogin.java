@@ -2,6 +2,8 @@ package Wordfeud;
 
 import java.sql.SQLException;
 
+import Wordfeud.DataBaseConnectie.DBMySQL;
+
 /**
  * 
  * @author Martin
