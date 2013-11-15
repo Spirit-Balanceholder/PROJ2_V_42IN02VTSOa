@@ -1,6 +1,9 @@
 package Wordfeud;
 
+import java.awt.Point;
 import java.sql.SQLException;
+
+import javax.swing.JTable;
 
 import Wordfeud.InfoControllers.AccountController;
 import Wordfeud.InfoControllers.AccountInfo;
@@ -13,26 +16,27 @@ import Wordfeud.InfoControllers.AccountInfo;
 public class ModelLogin
 {
 	
-	AccountInfo SQLI;
+	AccountInfo ai;
 	
 	public ModelLogin()
 	{
-		SQLI = new AccountInfo();
+		ai = new AccountInfo();
 	}
 	
 	protected boolean CheckLogin(String User, String Password)
 			throws SQLException
 	{
-		SQLI.setName(User);
-		SQLI.setPassword(Password);
-		
-		boolean result = false;
-		if (AccountController.Select() != null)
-			;
+		JTable temp = AccountController.Select();
+		for (int x = 0; x < temp.getRowCount(); x++)
 		{
-			result = true;
+			System.out.print(String.valueOf(temp.rowAtPoint(new Point(x, 0)))
+					+ " " + String.valueOf(temp.rowAtPoint(new Point(x, 1))));
 		}
-		return result;
+		
+		ai.setName(User);
+		ai.setPassword(Password);
+		
+		return AccountController.AccountExists(ai);
 	}
 	
 	// DB Dummy
