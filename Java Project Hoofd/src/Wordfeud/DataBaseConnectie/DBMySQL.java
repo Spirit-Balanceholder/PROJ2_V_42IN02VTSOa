@@ -347,4 +347,27 @@ public class DBMySQL
 		return false;
 	}
 
+	public boolean RecordExcist(String _tableName, String _fieldName,
+			String _value, String _fieldName2, String _value2)
+			throws SQLException
+	{
+
+		String RecordChecker = String.format(
+				"select * from %S where %s = '%s' and %s = '%s'", _tableName,
+				_fieldName, _value, _fieldName2, _value2);
+
+		Connection con = ConnectionCl.Connect();
+
+		Statement select = con.createStatement();
+		ResultSet result = select.executeQuery(RecordChecker);
+
+		result.last();
+		int i = result.getRow();
+
+		if (i > 0)
+			return true;
+
+		return false;
+	}
+
 }

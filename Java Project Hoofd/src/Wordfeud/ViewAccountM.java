@@ -3,6 +3,7 @@ package Wordfeud;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.jar.JarFile;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;

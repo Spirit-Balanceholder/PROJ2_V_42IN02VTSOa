@@ -2,7 +2,8 @@ package Wordfeud;
 
 import java.sql.SQLException;
 
-import Wordfeud.DataBaseConnectie.DBMySQL;
+import Wordfeud.InfoControllers.AccountController;
+import Wordfeud.InfoControllers.AccountInfo;
 
 /**
  * 
@@ -12,16 +13,26 @@ import Wordfeud.DataBaseConnectie.DBMySQL;
 public class ModelLogin
 {
 	
+	AccountInfo SQLI;
+	
 	public ModelLogin()
 	{
-		// SQLC = new DBMySQL();
+		SQLI = new AccountInfo();
 	}
 	
 	protected boolean CheckLogin(String User, String Password)
 			throws SQLException
 	{
-		// SQLC.RecordExcist("account", "naam", User);
-		return (DBCheck(User, Password));
+		SQLI.setName(User);
+		SQLI.setPassword(Password);
+		
+		boolean result = false;
+		if (AccountController.Select() != null)
+			;
+		{
+			result = true;
+		}
+		return result;
 	}
 	
 	// DB Dummy
