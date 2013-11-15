@@ -87,6 +87,7 @@ public class Board
 					tile = new Tile(Tile.eTileType.NoType, "", 0);
 				else
 					tile = new Tile(Tile.eTileType.NoType, RandomLetter(), 4);
+
 				tile.setSize(Size, Size);
 				tile.setLocation(y * Size + Offset, x * Size + Offset);
 				// tile.addMouseListener(new Panel_1MouseListener());
