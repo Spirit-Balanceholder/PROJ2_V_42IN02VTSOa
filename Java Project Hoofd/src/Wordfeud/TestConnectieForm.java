@@ -68,7 +68,11 @@ public class TestConnectieForm
 		{
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			// tb = AccountController.("account");
+=======
+			tb = AccountController.Select();
+>>>>>>> f4d8ab299875ebcc29ef6592517270ddbc7452db
 =======
 			tb = AccountController.Select();
 >>>>>>> f4d8ab299875ebcc29ef6592517270ddbc7452db
