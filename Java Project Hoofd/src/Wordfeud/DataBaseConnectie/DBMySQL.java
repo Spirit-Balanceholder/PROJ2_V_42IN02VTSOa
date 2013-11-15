@@ -235,6 +235,27 @@ public class DBMySQL
 		return table;
 	}
 
+	// deze heeft mike aangemaakt, omdat result gebruikelijk lijkt te zijn
+	// (equivalent aan datatable van c#)
+	public ResultSet SelectDTtest(String _tableName) throws SQLException
+	{
+		String query = String.format("Select * From `%s` ", _tableName) + Where;
+
+		Connection con = ConnectionCl.Connect();
+
+		Statement select = con.createStatement();
+		ResultSet result = select.executeQuery(query);
+
+		return result;
+		/*
+		 * JTable table = new JTable(buildTableModel(result));
+		 * 
+		 * select.close(); con.close();
+		 * 
+		 * return table;
+		 */
+	}
+
 	/**
 	 * Door gebruik te maken van deze methode kun je een custom select query
 	 * uitvoeren. Dit is bijvoorbeeld bruikbaar als je niet alle velden wilt
