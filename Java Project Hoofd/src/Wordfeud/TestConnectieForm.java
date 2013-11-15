@@ -12,6 +12,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import Wordfeud.DataBaseConnectie.DBMySQL;
+import Wordfeud.InfoControllers.AccountController;
 
 public class TestConnectieForm
 {
@@ -24,6 +25,7 @@ public class TestConnectieForm
 
 	public static void main(String[] args)
 	{
+
 		f = new JFrame("This is a test");
 
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,11 +65,10 @@ public class TestConnectieForm
 
 		});
 
-		DBMySQL d = new DBMySQL();
 		try
 		{
 
-			// tb = d.SelectDT("account");
+			tb = AccountController.Select();
 
 		}
 		catch (Exception e)

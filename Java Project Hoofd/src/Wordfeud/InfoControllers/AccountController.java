@@ -13,14 +13,14 @@ import Wordfeud.DataBaseConnectie.DBMySQL;
  */
 public class AccountController
 {
-	public JTable Select() throws SQLException
+	public static JTable Select() throws SQLException
 	{
 		DBMySQL db = new DBMySQL();
 
 		return db.SelectDT("Account");
 	}
 
-	public void Insert(AccountInfo ai)
+	public static void Insert(AccountInfo ai)
 	{
 		DBMySQL db = new DBMySQL();
 		db.addDataValue("naam", ai.getName());
@@ -37,27 +37,28 @@ public class AccountController
 
 	}
 
-	public void Update(AccountInfo ai) throws SQLException
+	public static void Update(AccountInfo ai)
 	{
 		DBMySQL db = new DBMySQL();
 		db.addDataValue("wachtwoord", ai.getPassword());
-
-		if (db.RecordExcist("Account", "naam", ai.getName()))
+		try
 		{
-			db.addWhere("naam", ai.getName());
-			try
+			if (db.RecordExcist("Account", "naam", ai.getName()))
 			{
+				db.addWhere("naam", ai.getName());
+
 				db.Update("Account");
 			}
-			catch (SQLException e)
-			{
-
-				e.printStackTrace();
-			}
 		}
+		catch (SQLException e)
+		{
+
+			e.printStackTrace();
+		}
+
 	}
 
-	public void Delete(AccountInfo ai)
+	public static void Delete(AccountInfo ai)
 	{
 		DBMySQL db = new DBMySQL();
 		db.addWhere("Naam", ai.getName());
