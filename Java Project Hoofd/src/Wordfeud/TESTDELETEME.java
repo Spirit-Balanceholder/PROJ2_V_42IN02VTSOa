@@ -6,4 +6,9 @@ public class TESTDELETEME
 	{
 		System.out.print("hoi");
 	}
+
+	public void Kippem()
+	{
+
+	}
 }
