@@ -70,7 +70,7 @@ public class Board
 	{
 		frmWordfeud = new JFrame();
 		frmWordfeud.setTitle("Wordfeud");
-		frmWordfeud.getContentPane().setBackground(new Color(0, 0, 0));
+		frmWordfeud.getContentPane().setBackground(new Color(24, 24, 24));
 		frmWordfeud.setBounds(100, 100, 600, 600);
 		frmWordfeud.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmWordfeud.getContentPane().setLayout(null);

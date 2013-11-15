@@ -26,7 +26,7 @@ public class Tile extends JPanel
 	/** Color of shadow */
 	protected Color		shadowColor		= Color.black;
 	/** Sets if it drops shadow */
-	protected boolean	shady			= true;
+	protected boolean	shady			= false;					// false
 	/** Sets if it has an High Quality view */
 	protected boolean	highQuality		= true;
 	/** Double values for Horizontal and Vertical radius of corner arcs */
@@ -37,6 +37,15 @@ public class Tile extends JPanel
 	protected int		shadowOffset	= 4;						// 4
 	/** The transparency value of shadow. ( 0 - 255) */
 	protected int		shadowAlpha		= 150;						// 150
+
+	// Colors
+	// Color yellow = Color.yellow;
+	Color				green			= new Color(115, 154, 107);
+	Color				orange			= new Color(205, 113, 33);
+	Color				blue			= new Color(24, 134, 148);
+	Color				purple			= new Color(99, 64, 116);
+	Color				red				= new Color(148, 65, 24);
+	Color				gray			= new Color(41, 44, 49);
 
 	// Wat er voor tekst komt te staan op deze tegel
 	JLabel				lblLetter		= new JLabel();
@@ -120,27 +129,27 @@ public class Tile extends JPanel
 		switch (_letterType)
 		{
 			case "DL":// green
-				this.setBackground(Color.green);
+				this.setBackground(green);
 				this.lblLetter.setForeground(Color.white);
 				break;
 			case "DW":// orange
-				this.setBackground(Color.orange);
+				this.setBackground(orange);
 				this.lblLetter.setForeground(Color.white);
 				break;
 			case "TL":// blauw
-				this.setBackground(Color.blue);
+				this.setBackground(blue);
 				this.lblLetter.setForeground(Color.white);
 				break;
 			case "TW":// roodbruin
-				this.setBackground(Color.red);
+				this.setBackground(red);
 				this.lblLetter.setForeground(Color.white);
 				break;
 			case "*":
-				this.setBackground(Color.pink);
+				this.setBackground(purple);
 				this.lblLetter.setForeground(Color.white);
 				break;
 			case "--":
-				this.setBackground(Color.gray);
+				this.setBackground(gray);
 				this.lblLetter.setForeground(Color.black);
 				lblLetter.setText("");
 				break;
