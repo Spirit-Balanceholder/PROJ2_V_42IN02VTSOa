@@ -1,9 +1,12 @@
+package Wordfeud;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.util.HashMap;
 import java.util.Random;
 
 import javax.swing.JFrame;
+
+import Wordfeud.Tile.eTileType;
 
 public class Board
 {
