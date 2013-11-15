@@ -272,6 +272,34 @@ public class DBMySQL
 		return table;
 	}
 
+	public Object[] SelectDR(String _tableName) throws SQLException
+	{
+		String query = String.format("Select * From `%s` ", _tableName) + Where;
+
+		Connection con = ConnectionCl.Connect();
+
+		Statement select = con.createStatement();
+		ResultSet result = select.executeQuery(query);
+
+		JTable table = new JTable(buildTableModel(result));
+
+		if (table.getRowCount() >= 1)
+		{
+			Object[] val = new Object[table.getColumnCount()];
+			// return table;
+
+			for (int i = 0; i < table.getColumnCount(); i++)
+			{
+				val[i] = table.getValueAt(0, i);
+			}
+
+			return val;
+		}
+
+		return null;
+
+	}
+
 	/**
 	 * Door deze methode kun je een custom query uitvoeren. Dit kan alleen een
 	 * Update/Insert of delete statement zijn.
