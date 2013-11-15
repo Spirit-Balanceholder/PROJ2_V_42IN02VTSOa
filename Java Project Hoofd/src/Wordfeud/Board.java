@@ -9,14 +9,15 @@ import javax.swing.JFrame;
 
 /**
  * 
- * @author MIKE
- * 
+ * @author MIKE Commentaar word in een later stadia toegevoegd omdat: Deze
+ *         klasse nog niet zo werkt zoals ik wil, en dan overbodig werk ga
+ *         verrichten.
  */
 public class Board
 {
 
 	private JFrame					frmWordfeud;
-	// Hashmap with all tiles
+	// Hashmap met alle tiles
 	public HashMap<String, Tile>	hmTiles		= new HashMap<String, Tile>();
 	// Waardes
 	private int						Size		= 30;
@@ -47,10 +48,9 @@ public class Board
 	/**
 	 * Create the application.
 	 */
-	public Board(int GameID)
+	public Board(int _gameID)
 	{
 		initialize();
-		// TODO
 
 	}
 
@@ -86,7 +86,8 @@ public class Board
 				else if (index == 2 || index == 8 || index == 18)
 					tile = new Tile(Tile.eTileType.NoType, "", 0);
 				else
-					tile = new Tile(Tile.eTileType.NoType, RandomLetter(), 4);
+					tile = new Tile(Tile.eTileType.NoType, RandomLetter(),
+							new Random().nextInt(5));
 
 				tile.setSize(Size, Size);
 				tile.setLocation(y * Size + Offset, x * Size + Offset);
@@ -102,6 +103,10 @@ public class Board
 		{
 			frmWordfeud.getContentPane().add(t);
 		}
+
+		// alle database doorlopen en zoeken in de hashmap, deze aanpassen naar
+		// correcte waarde wat in de edatabase staat
+		// als dat gedaaan is word dat meteen wergegeven op het scherm
 	}
 
 	private String RandomLetter()

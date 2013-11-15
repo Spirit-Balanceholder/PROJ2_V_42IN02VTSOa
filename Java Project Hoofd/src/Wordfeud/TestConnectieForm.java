@@ -53,8 +53,7 @@ public class TestConnectieForm
 					js = new JScrollPane(tb);
 					js.setBounds(0, 100, 490, 300);
 					f.getContentPane().add(js);
-				}
-				catch (Exception e)
+				} catch (Exception e)
 				{
 					System.out.println(e);
 				}
@@ -67,10 +66,9 @@ public class TestConnectieForm
 		try
 		{
 
-			// tb = d.SelectDT("account");
+			// tb = AccountController.("account");
 
-		}
-		catch (Exception e)
+		} catch (Exception e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
