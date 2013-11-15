@@ -1,5 +1,6 @@
 package Wordfeud.InfoControllers;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JTable;
@@ -17,13 +18,13 @@ public class TileController
 
 	}
 
-	public static Object[] getFromXY(int x, int y) throws SQLException
+	public static ResultSet getFromXY(int x, int y) throws SQLException
 	{
 		DBMySQL db = new DBMySQL();
 		db.addWhere("x", Convert.ToString(x));
 		db.addWhere("y", Convert.ToString(y));
-		db.SelectDR("Tegel");
-		return db.SelectDR("Tegel");// db.SelectDT("Tegel");
+
+		return db.SelectDTtest("Tegel");
 
 	}
 }

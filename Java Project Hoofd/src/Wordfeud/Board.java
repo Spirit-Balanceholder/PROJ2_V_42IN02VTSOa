@@ -2,13 +2,13 @@ package Wordfeud;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JTable;
 
 import Wordfeud.InfoControllers.TileController;
 
@@ -85,31 +85,37 @@ public class Board
 	{
 		try
 		{
-			Object[] rr = null;
 
-			String xxx = (String) rr[3];
-			int asdasd = (int) rr[0];
+			ResultSet rs = null;
 
 			// Playfieldinfo pi = new Playfieldinfo();
 			// hmTiles = pi.GethmByID();
 			// ID NU TIJDELIJK DIT:
 
 			Tile tile;
-			for (int x = 0; x < BoardSize; x++)
-				for (int y = 0; y < BoardSize; y++)
+			for (int x = 1; x < BoardSize; x++)
+				for (int y = 1; y < BoardSize; y++)
 				{
 
-					rr = TileController.getFromXY(x, y);
-					JTable aa = TileController.Select();
+					rs = TileController.getFromXY(x, y);
+					while (rs.next())
+					{
+						String value = rs.getString(3);
+						String length = rs.getString(4);
 
-					tile = new Tile(Tile.eTileType.NoType, RandomLetter(), 4);
+						System.out.println("length=" + length + ", value='"
+								+ value + "'");
+					}
 
-					tile.setSize(Size, Size);
-					tile.setLocation(y * Size + Offset, x * Size + Offset);
-					// tile.addMouseListener(new Panel_1MouseListener());
-					// frame.getContentPane().add(tile);
-
-					hmTiles.put(x + "-" + y, tile);
+					/*
+					 * tile = new Tile(Tile.eTileType.NoType, RandomLetter(),
+					 * 4); tile.setSize(Size, Size); tile.setLocation(y * Size +
+					 * Offset, x * Size + Offset); // tile.addMouseListener(new
+					 * Panel_1MouseListener()); //
+					 * frame.getContentPane().add(tile);
+					 * 
+					 * hmTiles.put(x + "-" + y, tile);
+					 */
 
 				}
 

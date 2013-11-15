@@ -245,7 +245,8 @@ public class DBMySQL
 
 		Statement select = con.createStatement();
 		ResultSet result = select.executeQuery(query);
-
+		// select.close();
+		// con.close();
 		return result;
 		/*
 		 * JTable table = new JTable(buildTableModel(result));
