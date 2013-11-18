@@ -158,9 +158,10 @@ public class Tile extends JPanel
 		int width = getWidth();
 		int height = getHeight();
 		int shadowGap = this.shadowGap;
+		Graphics2D graphics = (Graphics2D) g;
+
 		Color shadowColorA = new Color(shadowColor.getRed(),
 				shadowColor.getGreen(), shadowColor.getBlue(), shadowAlpha);
-		Graphics2D graphics = (Graphics2D) g;
 
 		// Sets antialiasing if HQ.
 		if (highQuality)
