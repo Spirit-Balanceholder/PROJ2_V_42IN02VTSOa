@@ -16,26 +16,27 @@ public class AccountController
 	public static JTable Select() throws SQLException
 	{
 		DBMySQL db = new DBMySQL();
-		
-		return db.SelectDT("Account");
+
+		return db.SelectDTTable("Account");
 	}
-	
+
 	public static void Insert(AccountInfo ai)
 	{
 		DBMySQL db = new DBMySQL();
 		db.addDataValue("naam", ai.getName());
 		db.addDataValue("wachtwoord", ai.getPassword());
-		
+
 		try
 		{
 			db.Insert("Account");
-		} catch (SQLException e)
+		}
+		catch (SQLException e)
 		{
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	public static void Update(AccountInfo ai)
 	{
 		DBMySQL db = new DBMySQL();
@@ -45,32 +46,34 @@ public class AccountController
 			if (db.RecordExcist("Account", "naam", ai.getName()))
 			{
 				db.addWhere("naam", ai.getName());
-				
+
 				db.Update("Account");
 			}
-		} catch (SQLException e)
+		}
+		catch (SQLException e)
 		{
-			
+
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	public static void Delete(AccountInfo ai)
 	{
 		DBMySQL db = new DBMySQL();
 		db.addWhere("Naam", ai.getName());
-		
+
 		try
 		{
 			db.Delete("Account");
-		} catch (SQLException e)
+		}
+		catch (SQLException e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Auteur: Martin
 	 * 
@@ -80,7 +83,7 @@ public class AccountController
 	public static boolean AccountExists(AccountInfo ai) throws SQLException
 	{
 		DBMySQL db = new DBMySQL();
-		
+
 		return db.RecordExcist("Account", "naam", ai.getName(), "wachtwoord",
 				ai.getPassword());
 	}
