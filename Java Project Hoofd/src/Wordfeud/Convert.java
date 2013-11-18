@@ -9,6 +9,23 @@ public class Convert
 
 	public static int ToInt(Object x)
 	{
-		return (int) x;
+		int i = 0;
+		try
+		{
+			i = Integer.valueOf((String) x);
+		} catch (Exception e)
+		{
+			ErrorHandle.Print(e, "Convert.toInt");
+			i = 0;
+		}
+		return i;
+	}
+}
+
+class ErrorHandle
+{
+	public static void Print(Exception e, String From)
+	{
+		System.out.println("Error from " + From + ": " + e.getMessage());
 	}
 }

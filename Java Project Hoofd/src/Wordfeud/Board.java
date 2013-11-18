@@ -125,9 +125,11 @@ public class Board
 				Tile t = hmTiles.get(xx + "-" + yy);
 
 				if (rs.getString("LetterType_karakter").contains("?"))
-					t.Set(rs.getString("BlancoLetterKarakter"), 0);
+					t.Set(rs.getString("BlancoLetterKarakter"),
+							rs.getInt("waarde"));
 				else
-					t.Set(rs.getString("LetterType_karakter"), 0);
+					t.Set(rs.getString("LetterType_karakter"),
+							rs.getInt("waarde"));
 			}
 
 		} catch (SQLException e)
