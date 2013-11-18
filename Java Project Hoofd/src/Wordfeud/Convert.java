@@ -1,14 +1,11 @@
 package Wordfeud;
 
+
 public class Convert
 {
-	public static String ToString(Object x)
+	public static String ToString(int x)
 	{
-		return (String) x;
+		return Integer.toString(x);
 	}
 
-	public static int ToInt(Object x)
-	{
-		return (int) x;
-	}
 }
