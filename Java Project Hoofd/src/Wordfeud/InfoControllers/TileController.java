@@ -30,8 +30,6 @@ public class TileController
 	{
 		DBMySQL db = new DBMySQL();
 		db.addWhere("Spel_ID", Convert.ToString(Spel_ID));
-
-		int lolol = Convert.ToInt("123");
 		try (ResultSet resultSet = db.SelectDTtest("gelegdeletter"))
 		{
 			return resultSet;

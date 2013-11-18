@@ -4,13 +4,11 @@ public class Convert
 {
 	public static String ToString(Object x)
 	{
-
-		return x.toString();
+		return (String) x;
 	}
 
 	public static int ToInt(Object x)
 	{
-
 		return (int) x;
 	}
 
