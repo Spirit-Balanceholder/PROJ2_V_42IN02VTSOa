@@ -13,6 +13,8 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import Wordfeud.DataBaseConnectie.DBMySQL;
+import Wordfeud.DataBaseConnectie.DBMySQL.Joins;
+import Wordfeud.DataBaseConnectie.DBMySQL.Operator;
 
 /**
  * 
@@ -34,8 +36,12 @@ public class TestConnectieForm
 		DBMySQL db = new DBMySQL();
 
 		db.setisJoin(true);
-		db.addJoin("inner", "Letter", "ID", "Gelegdeletter", "Letter_ID");
+
+		db.addJoin(Joins.Inner, "Letter", "ID", "Gelegdeletter", "Letter_ID");
+
 		db.addWhereJoin("GelegdeLetter", "Spel_ID", "511");
+
+		db.addWhere("", "", Operator.Greater);
 
 		f = new JFrame("This is a test");
 		ResultSet set = null;

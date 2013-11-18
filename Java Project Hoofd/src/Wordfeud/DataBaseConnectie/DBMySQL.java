@@ -21,8 +21,45 @@ import com.sun.rowset.CachedRowSetImpl;
  *         stuurt ook de JTables terug voor de select statements.
  * 
  */
+
 public class DBMySQL
 {
+
+	public enum Operator
+	{
+		Is("="), Greater(">"), GreaterThan(">="), Lesser("<"), LesserThan("<="), Not(
+				"<>");
+
+		private final String	id;
+
+		Operator(String id)
+		{
+			this.id = id;
+		}
+
+		public String getValue()
+		{
+			return id;
+		}
+	}
+
+	public enum Joins
+	{
+		Inner("Inner"), Left("left"), Right("Right");
+
+		private final String	id;
+
+		Joins(String id)
+		{
+			this.id = id;
+		}
+
+		public String getValue()
+		{
+			return id;
+		}
+	}
+
 	/**
 	 * De variabele die in deze class worden gebruikt om de query's op te
 	 * bouwen.
@@ -84,6 +121,17 @@ public class DBMySQL
 	 *            clause. Mochten er al gegevens staan in where dan word het
 	 *            toegevoegd als een and.
 	 */
+	public void addWhere(String _field, String _value, Operator oparator)
+	{
+		if (Where.equals(""))
+			Where = String.format(" Where `%s` " + oparator + " '%s'", _field,
+					_value);
+		else
+			Where += String.format(" and `%s` " + oparator + "  '%s'", _field,
+					_value);
+
+	}
+
 	public void addWhere(String _field, String _value)
 	{
 		if (Where.equals(""))
@@ -113,22 +161,12 @@ public class DBMySQL
 					+ _value + "%'";
 	}
 
-	public void addJoin(String _type, String _tableNeeded, String _fieldNeeded,
+	public void addJoin(Joins join, String _tableNeeded, String _fieldNeeded,
 			String _tableMain, String _fieldMain)
 	{
-		Join += String.format(" %s join %s on %s.%s = %s.%s", _type,
+		Join += String.format(" %s join %s on %s.%s = %s.%s", join,
 				_tableNeeded, _tableNeeded, _fieldNeeded, _tableMain,
 				_fieldMain);
-	}
-
-	public void addLeftJoin()
-	{
-
-	}
-
-	public void addRightJoin()
-	{
-
 	}
 
 	/**
@@ -498,5 +536,6 @@ public class DBMySQL
 	// TODO Andy
 	// 1 Object returen.
 	// Joins maken.
+	// Where Operator
 
 }
