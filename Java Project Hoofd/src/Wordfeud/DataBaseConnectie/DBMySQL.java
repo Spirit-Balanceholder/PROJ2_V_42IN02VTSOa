@@ -35,7 +35,7 @@ public class DBMySQL
 	private String	Updates		= "";
 	private String	Join		= "";
 
-	private Boolean	isJoin;
+	private Boolean	isJoin		= false;
 
 	public boolean getisJoin()
 	{
