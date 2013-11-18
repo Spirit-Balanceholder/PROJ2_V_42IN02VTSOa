@@ -35,6 +35,14 @@ public class TileController
 		db.setisJoin(true);
 		ResultSet resultSet = db.SelectDTResult("gelegdeletter");
 
+		/*
+		 * 
+		 * select * from gelegdeletter join Letter on Gelegdeletter.Letter_ID =
+		 * Letter.ID where Gelegdeletter.Spel_ID = 511
+		 * 
+		 * 
+		 * select * FROM lettertype
+		 */
 		return resultSet;
 
 	}
