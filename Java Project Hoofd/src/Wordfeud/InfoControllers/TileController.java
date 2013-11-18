@@ -12,7 +12,7 @@ public class TileController
 	{
 		DBMySQL db = new DBMySQL();
 
-		return db.SelectDTtest("Tegel");
+		return db.SelectDTResult("Tegel");
 
 	}
 
@@ -22,7 +22,7 @@ public class TileController
 		db.addWhere("x", Convert.ToString(x));
 		db.addWhere("y", Convert.ToString(y));
 
-		return db.SelectDTtest("Tegel");
+		return db.SelectDTResult("Tegel");
 
 	}
 }

@@ -70,7 +70,7 @@ public class TestConnectieForm
 		try
 		{
 			DBMySQL d = new DBMySQL();
-			set = d.SelectDTtest("Account");
+			// set = d.SelectDTtest("Account");
 
 		}
 		catch (Exception e)
