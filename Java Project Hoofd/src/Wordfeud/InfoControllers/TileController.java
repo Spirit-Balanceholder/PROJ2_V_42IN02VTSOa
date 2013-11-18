@@ -25,4 +25,15 @@ public class TileController
 		return db.SelectDTtest("Tegel");
 
 	}
+
+	public static ResultSet getPlayedLetters(int Spel_ID) throws SQLException
+	{
+		DBMySQL db = new DBMySQL();
+		db.addWhere("Spel_ID", Convert.ToString(Spel_ID));
+		try (ResultSet resultSet = db.SelectDTtest("gelegdeletter"))
+		{
+			return resultSet;
+		}
+
+	}
 }
