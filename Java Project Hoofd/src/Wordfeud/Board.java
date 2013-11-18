@@ -35,6 +35,8 @@ public class Board
 	// een test knopje
 	private final JButton			btnNewButton	= new JButton("Druk dan");
 
+	private int						Spel_ID			= 0;
+
 	/**
 	 * Launch the application.
 	 */
@@ -46,7 +48,7 @@ public class Board
 			{
 				try
 				{
-					Board window = new Board(0);
+					Board window = new Board(511);
 					window.frmWordfeud.setVisible(true);
 				} catch (Exception e)
 				{
@@ -60,11 +62,19 @@ public class Board
 	 * Create the application.
 	 * 
 	 */
-	public Board(int GameID)
+	public Board(int spel_id)
 	{
 		initialize();
 		// TODO
+		Spel_ID = spel_id;
 
+		//
+		GenerateField();
+
+		//
+		FillField();
+
+		//
 	}
 
 	/**
@@ -85,12 +95,6 @@ public class Board
 			this.btnNewButton.setBounds(10, 11, 89, 23);
 			frmWordfeud.getContentPane().add(this.btnNewButton);
 		}
-
-		//
-		GenerateField();
-
-		//
-		FillField();
 
 	}
 
@@ -114,6 +118,7 @@ public class Board
 
 			}
 
+			rs = TileController.getPlayedLetters(Spel_ID);
 		} catch (SQLException e)
 		{
 			// TODO Auto-generated catch block
