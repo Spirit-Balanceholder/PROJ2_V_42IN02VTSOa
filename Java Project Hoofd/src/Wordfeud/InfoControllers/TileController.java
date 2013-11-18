@@ -29,7 +29,10 @@ public class TileController
 	public static ResultSet getPlayedLetters(int Spel_ID) throws SQLException
 	{
 		DBMySQL db = new DBMySQL();
-		db.addWhere("Spel_ID", Convert.ToString(Spel_ID));
+		// db.addWhere("", Convert.ToString(Spel_ID));
+		db.addJoin("inner", "Letter", "ID", "gelegdeletter", "Letter_ID");
+		db.addWhereJoin("gelegdeletter", "Spel_ID", Convert.ToString(Spel_ID));
+		db.setisJoin(true);
 		ResultSet resultSet = db.SelectDTResult("gelegdeletter");
 
 		return resultSet;
