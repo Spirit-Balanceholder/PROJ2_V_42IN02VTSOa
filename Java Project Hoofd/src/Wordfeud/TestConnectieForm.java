@@ -54,7 +54,7 @@ public class TestConnectieForm
 				{
 					f.remove(js);
 
-					js = new JScrollPane(tb);
+					// js = new JScrollPane(tb);
 					js.setBounds(0, 100, 490, 300);
 					f.getContentPane().add(js);
 				}
@@ -70,7 +70,7 @@ public class TestConnectieForm
 		try
 		{
 			DBMySQL d = new DBMySQL();
-			set = d.SelectDTtest("Account");
+			// set = d.SelectDTtest("Account");
 
 		}
 		catch (Exception e)

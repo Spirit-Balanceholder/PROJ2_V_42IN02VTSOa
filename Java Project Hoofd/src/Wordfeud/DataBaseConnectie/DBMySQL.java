@@ -221,7 +221,7 @@ public class DBMySQL
 	 *             De table terug sturen die de informatie bevat.
 	 * 
 	 */
-	public JTable SelectDT(String _tableName) throws SQLException
+	public JTable SelectDTTable(String _tableName) throws SQLException
 	{
 		String query = String.format("Select * From `%s` ", _tableName) + Where;
 
@@ -240,7 +240,7 @@ public class DBMySQL
 
 	// deze heeft mike aangemaakt, omdat result gebruikelijk lijkt te zijn
 	// (equivalent aan datatable van c#)
-	public ResultSet SelectDTtest(String _tableName) throws SQLException
+	public ResultSet SelectDTResult(String _tableName) throws SQLException
 	{
 		String query = String.format("Select * From `%s` ", _tableName) + Where;
 
