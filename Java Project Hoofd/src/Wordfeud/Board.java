@@ -116,12 +116,20 @@ public class Board
 				// t.SetText(rs.getString(4));
 				t.Set(rs.getString(4), 0);
 			}
-			/*
-			 * rs = TileController.getPlayedLetters(Spel_ID); while (rs.next())
-			 * { String xx = rs.getString("Tegel_X"); String yy =
-			 * rs.getString("Tegel_Y"); Tile t = hmTiles.get(xx + "-" + yy);
-			 * t.Set(rs.getString(4), 0); }
-			 */
+
+			rs = TileController.getPlayedLetters(Spel_ID);
+			while (rs.next())
+			{
+				String xx = rs.getString("Tegel_X");
+				String yy = rs.getString("Tegel_Y");
+				Tile t = hmTiles.get(xx + "-" + yy);
+
+				if (rs.getString("LetterType_karakter").contains("?"))
+					t.Set(rs.getString("BlancoLetterKarakter"), 0);
+				else
+					t.Set(rs.getString("LetterType_karakter"), 0);
+			}
+
 		} catch (SQLException e)
 		{
 			// TODO Auto-generated catch block
