@@ -24,10 +24,15 @@ public class Board
 	private JFrame					frmWordfeud;
 	// Hashmap with all tiles
 	public HashMap<String, Tile>	hmTiles			= new HashMap<String, Tile>();
+
 	// Waardes
+	// aanpasbaar (30)
 	private int						Size			= 30;
+	// standaard! (16)
 	private int						BoardSize		= 16;
+	// Aanpasbaar, tussenruimte (30)
 	private int						Offset			= 30;
+	// een test knopje
 	private final JButton			btnNewButton	= new JButton("Druk dan");
 
 	/**
@@ -69,7 +74,7 @@ public class Board
 	private void initialize()
 	{
 		frmWordfeud = new JFrame();
-		frmWordfeud.setTitle("Wordfeud");
+		frmWordfeud.setTitle("Freddy vs Jason");
 		frmWordfeud.getContentPane().setBackground(new Color(24, 24, 24));
 		frmWordfeud.setBounds(100, 100, 600, 600);
 		frmWordfeud.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
