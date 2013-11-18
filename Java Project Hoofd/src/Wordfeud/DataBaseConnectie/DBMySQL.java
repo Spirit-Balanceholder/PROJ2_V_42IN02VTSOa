@@ -35,7 +35,17 @@ public class DBMySQL
 	private String	Updates		= "";
 	private String	Join		= "";
 
-	public Boolean	isJoin		= false;
+	private Boolean	isJoin;
+
+	public boolean getisJoin()
+	{
+		return isJoin;
+	}
+
+	public void setisJoin(boolean isjoin)
+	{
+		isJoin = isjoin;
+	}
 
 	/**
 	 * Deze methode is verantwoordelijk voor het uitvoeren van een query. Deze

@@ -32,9 +32,9 @@ public class TestConnectieForm
 	public static void main(String[] args)
 	{
 		DBMySQL db = new DBMySQL();
-		db.isJoin = true;
-		db.addInnerJoin("inner", "Letter", "ID", "Gelegdeletter", "Letter_ID");
 
+		db.setisJoin(true);
+		db.addInnerJoin("inner", "Letter", "ID", "Gelegdeletter", "Letter_ID");
 		db.AddWhereJoin("GelegdeLetter", "Spel_ID", "511");
 
 		f = new JFrame("This is a test");
