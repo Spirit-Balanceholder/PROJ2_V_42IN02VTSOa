@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import Wordfeud.Convert;
 import Wordfeud.DataBaseConnectie.DBMySQL;
+import Wordfeud.DataBaseConnectie.DBMySQL.Joins;
 
 public class TileController
 {
@@ -30,11 +31,11 @@ public class TileController
 	{
 		DBMySQL db = new DBMySQL();
 		//
-		db.addJoin("inner", "Letter", "ID", "gelegdeletter", "Letter_ID");
+		db.addJoin(Joins.Inner, "Letter", "ID", "gelegdeletter", "Letter_ID");
 		//
 		// inner join LetterType on LetterType.karakter =
 		// Letter.LetterType_Karakter
-		db.addJoin("inner", "LetterType", "karakter", "Letter",
+		db.addJoin(Joins.Inner, "LetterType", "karakter", "Letter",
 				"LetterType_Karakter");
 		//
 		db.addWhereJoin("gelegdeletter", "Spel_ID", Convert.ToString(Spel_ID));
