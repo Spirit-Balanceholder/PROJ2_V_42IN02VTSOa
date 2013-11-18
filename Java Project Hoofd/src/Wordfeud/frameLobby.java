@@ -1,11 +1,19 @@
 package Wordfeud;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.ListModel;
+
+import Wordfeud.DataBaseConnectie.DBConnectie;
+import Wordfeud.DataBaseConnectie.DBMySQL;
 
 /**
  * 
@@ -14,24 +22,30 @@ import javax.swing.JScrollPane;
  */
 public class frameLobby extends JFrame
 {
+	
 	private JScrollPane scrollCompetite;
 	private JList<String> listCompetite;
+	private DBConnectie connectie;
+	private DBMySQL querybuilder;
+	private JTable competitions;
 	
 	public frameLobby()
 	{
-		listCompetite = new JList<String>();
-		listCompetite.add("Kai", new JLabel("Kai"));
+		connectie = new DBConnectie();
+		querybuilder = new DBMySQL();
 		
-		scrollCompetite = new JScrollPane();
-		scrollCompetite.setVisible(true);
-		scrollCompetite.add(listCompetite);
-		scrollCompetite.setSize(80, 200);
+		try {
+			querybuilder.SelectDT("competitie");
+		} catch (SQLException e) {
+			
+		}
+		
+		scrollCompetite = new JScrollPane(competitions);
 		
 		setLayout(new BorderLayout());
-		add(scrollCompetite);
+		add(BorderLayout.WEST, scrollCompetite);
 		setTitle("wordfeud");
 		setSize(600, 400);
-		setEnabled(true);
 		setVisible(true);
 	}
 }
