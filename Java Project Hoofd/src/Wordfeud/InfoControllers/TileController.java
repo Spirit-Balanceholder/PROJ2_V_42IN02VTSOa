@@ -30,10 +30,9 @@ public class TileController
 	{
 		DBMySQL db = new DBMySQL();
 		db.addWhere("Spel_ID", Convert.ToString(Spel_ID));
-		try (ResultSet resultSet = db.SelectDTtest("gelegdeletter"))
-		{
-			return resultSet;
-		}
+		ResultSet resultSet = db.SelectDTtest("gelegdeletter");
+
+		return resultSet;
 
 	}
 }

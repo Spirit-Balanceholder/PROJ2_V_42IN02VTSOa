@@ -119,6 +119,13 @@ public class Board
 			}
 
 			rs = TileController.getPlayedLetters(Spel_ID);
+			while (rs.next())
+			{
+				String xx = rs.getString("Tegel_X");
+				String yy = rs.getString("Tegel_Y");
+				Tile t = hmTiles.get(xx + "-" + yy);
+				t.Set(rs.getString(4), 0);
+			}
 		} catch (SQLException e)
 		{
 			// TODO Auto-generated catch block
