@@ -35,7 +35,7 @@ public class frameLobby extends JFrame
 		querybuilder = new DBMySQL();
 		
 		try {
-			querybuilder.SelectDT("competitie");
+			competitions = querybuilder.SelectDTTable("competitie");
 		} catch (SQLException e) {
 			
 		}

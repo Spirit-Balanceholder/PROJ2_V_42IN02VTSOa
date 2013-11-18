@@ -115,7 +115,6 @@ public class Board
 				Tile t = hmTiles.get(xx + "-" + yy);
 				// t.SetText(rs.getString(4));
 				t.Set(rs.getString(4), 0);
-
 			}
 			/*
 			 * rs = TileController.getPlayedLetters(Spel_ID); while (rs.next())
