@@ -28,10 +28,14 @@ public class DBMySQL
 	 * bouwen.
 	 */
 	private String	Where		= "";
+	private String	JoinWhere	= "";
 	private String	TableName	= "";
 	private String	Insert		= "";
 	private String	Values		= "";
 	private String	Updates		= "";
+	private String	Join		= "";
+
+	public Boolean	isJoin		= false;
 
 	/**
 	 * Deze methode is verantwoordelijk voor het uitvoeren van een query. Deze
@@ -76,6 +80,44 @@ public class DBMySQL
 			Where = String.format(" Where `%s` = '%s'", _field, _value);
 		else
 			Where += String.format(" and `%s` = '%s'", _field, _value);
+
+	}
+
+	public void AddWhereJoin(String _tableName, String _field, String _value)
+	{
+		if (JoinWhere.equals(""))
+			JoinWhere = String.format(" Where  %s.`%s` = '%s'", _tableName,
+					_field, _value);
+		else
+			JoinWhere += String.format(" and %s.`%s` = '%s'", _tableName,
+					_field, _value);
+	}
+
+	public void addWhereJoinLike(String _tableName, String _field, String _value)
+	{
+		if (JoinWhere.equals(""))
+			JoinWhere = " Where   " + _tableName + ".`" + _field + "` like '%"
+					+ _value + "%'";
+		else
+			JoinWhere += " and " + _tableName + ".`" + _field + "` like '%"
+					+ _value + "%'";
+	}
+
+	public void addInnerJoin(String _type, String _tableNeeded,
+			String _fieldNeeded, String _tableMain, String _fieldMain)
+	{
+		Join += String.format(" %s join %s on %s.%s = %s.%s", _type,
+				_tableNeeded, _tableNeeded, _fieldNeeded, _tableMain,
+				_fieldMain);
+	}
+
+	public void addLeftJoin()
+	{
+
+	}
+
+	public void addRightJoin()
+	{
 
 	}
 
@@ -223,7 +265,16 @@ public class DBMySQL
 	 */
 	public JTable SelectDTTable(String _tableName) throws SQLException
 	{
-		String query = String.format("Select * From `%s` ", _tableName) + Where;
+		String query = "";
+		if (isJoin)
+		{
+			query = String.format("Select * From `%s` ", _tableName) + Join
+					+ JoinWhere;
+		}
+		else
+		{
+			query = String.format("Select * From `%s` ", _tableName) + Where;
+		}
 
 		Connection con = ConnectionCl.Connect();
 
@@ -238,11 +289,24 @@ public class DBMySQL
 		return table;
 	}
 
-	// deze heeft mike aangemaakt, omdat result gebruikelijk lijkt te zijn
-	// (equivalent aan datatable van c#)
+	/**
+	 * 
+	 * @param _tableName
+	 * @return
+	 * @throws SQLException
+	 */
 	public ResultSet SelectDTResult(String _tableName) throws SQLException
 	{
-		String query = String.format("Select * From `%s` ", _tableName) + Where;
+		String query = "";
+		if (isJoin)
+		{
+			query = String.format("Select * From `%s` ", _tableName) + Join
+					+ JoinWhere;
+		}
+		else
+		{
+			query = String.format("Select * From `%s` ", _tableName) + Where;
+		}
 
 		Connection con = ConnectionCl.Connect();
 
@@ -255,17 +319,6 @@ public class DBMySQL
 		con.close();
 
 		return rowset;
-		/*
-		 * try { return result; } finally {
-		 * 
-		 * result.close();
-		 * 
-		 * /* select.close(); con.close();
-		 * 
-		 * 
-		 * }
-		 */
-
 	}
 
 	/**
@@ -307,7 +360,8 @@ public class DBMySQL
 
 	public Object[] SelectDR(String _tableName) throws SQLException
 	{
-		String query = String.format("Select * From `%s` ", _tableName) + Where;
+		String query = String.format("Select * From `%s` ", _tableName) + Join
+				+ Where;
 
 		Connection con = ConnectionCl.Connect();
 
@@ -430,5 +484,9 @@ public class DBMySQL
 
 		return false;
 	}
+
+	// TODO Andy
+	// 1 Object returen.
+	// Joins maken.
 
 }

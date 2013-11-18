@@ -21,6 +21,7 @@ import Wordfeud.DataBaseConnectie.DBMySQL;
  */
 public class TestConnectieForm
 {
+
 	static JTextField	text1;
 	static JTextField	text2;
 	static JTable		tb;
@@ -30,6 +31,11 @@ public class TestConnectieForm
 
 	public static void main(String[] args)
 	{
+		DBMySQL db = new DBMySQL();
+		db.isJoin = true;
+		db.addInnerJoin("inner", "Letter", "ID", "Gelegdeletter", "Letter_ID");
+
+		db.AddWhereJoin("GelegdeLetter", "Spel_ID", "511");
 
 		f = new JFrame("This is a test");
 		ResultSet set = null;
@@ -54,7 +60,7 @@ public class TestConnectieForm
 				{
 					f.remove(js);
 
-					// js = new JScrollPane(tb);
+					js = new JScrollPane(tb);
 					js.setBounds(0, 100, 490, 300);
 					f.getContentPane().add(js);
 				}
@@ -69,7 +75,8 @@ public class TestConnectieForm
 
 		try
 		{
-			DBMySQL d = new DBMySQL();
+
+			tb = db.SelectDTTable("gelegdeletter");
 			// set = d.SelectDTtest("Account");
 
 		}
