@@ -7,8 +7,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 
+import javax.sql.rowset.CachedRowSet;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import com.sun.rowset.CachedRowSetImpl;
 
 /**
  * 
@@ -245,16 +248,24 @@ public class DBMySQL
 
 		Statement select = con.createStatement();
 		ResultSet result = select.executeQuery(query);
-		// select.close();
-		// con.close();
-		return result;
+
+		CachedRowSet rowset = new CachedRowSetImpl();
+		rowset.populate(result);
+
+		con.close();
+
+		return rowset;
 		/*
-		 * JTable table = new JTable(buildTableModel(result));
+		 * try { return result; } finally {
 		 * 
-		 * select.close(); con.close();
+		 * result.close();
 		 * 
-		 * return table;
+		 * /* select.close(); con.close();
+		 * 
+		 * 
+		 * }
 		 */
+
 	}
 
 	/**

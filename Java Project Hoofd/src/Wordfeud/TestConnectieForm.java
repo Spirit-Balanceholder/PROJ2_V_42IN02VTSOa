@@ -3,6 +3,7 @@ package Wordfeud;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -31,7 +32,7 @@ public class TestConnectieForm
 	{
 
 		f = new JFrame("This is a test");
-
+		ResultSet set = null;
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize(500, 500);
 
@@ -69,12 +70,24 @@ public class TestConnectieForm
 		try
 		{
 			DBMySQL d = new DBMySQL();
-			d.SelectDR("Account");
+			set = d.SelectDTtest("Account");
+
 		}
 		catch (Exception e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+
+		String a = "";
+		try
+		{
+			set.absolute(1);
+			a = set.getString(1);
+		}
+		catch (Exception e)
+		{
+
 		}
 
 		p.add(btnTest);
