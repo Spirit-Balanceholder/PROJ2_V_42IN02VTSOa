@@ -34,8 +34,8 @@ public class TestConnectieForm
 		DBMySQL db = new DBMySQL();
 
 		db.setisJoin(true);
-		db.addInnerJoin("inner", "Letter", "ID", "Gelegdeletter", "Letter_ID");
-		db.AddWhereJoin("GelegdeLetter", "Spel_ID", "511");
+		db.addJoin("inner", "Letter", "ID", "Gelegdeletter", "Letter_ID");
+		db.addWhereJoin("GelegdeLetter", "Spel_ID", "511");
 
 		f = new JFrame("This is a test");
 		ResultSet set = null;

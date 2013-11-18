@@ -93,7 +93,7 @@ public class DBMySQL
 
 	}
 
-	public void AddWhereJoin(String _tableName, String _field, String _value)
+	public void addWhereJoin(String _tableName, String _field, String _value)
 	{
 		if (JoinWhere.equals(""))
 			JoinWhere = String.format(" Where  %s.`%s` = '%s'", _tableName,
@@ -113,8 +113,8 @@ public class DBMySQL
 					+ _value + "%'";
 	}
 
-	public void addInnerJoin(String _type, String _tableNeeded,
-			String _fieldNeeded, String _tableMain, String _fieldMain)
+	public void addJoin(String _type, String _tableNeeded, String _fieldNeeded,
+			String _tableMain, String _fieldMain)
 	{
 		Join += String.format(" %s join %s on %s.%s = %s.%s", _type,
 				_tableNeeded, _tableNeeded, _fieldNeeded, _tableMain,
